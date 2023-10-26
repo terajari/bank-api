@@ -12,18 +12,18 @@ dropdb:
 	docker exec -it ${db_container} dropdb --username=${USERNAME} ${DB_NAME}
 
 createmigrate:
-	migrate create -ext sql -dir migration/postgres init-schema  
+	./migrate create -ext sql -dir migration/postgres init-schema  
 
 migrateup:
-	migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose up
+	./migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose up
 
 migrateup1:
-	migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose up 1
+	./migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose up 1
 
 migratedown1:
-	migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose down
+	./migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose down
 
 migratedown:
-	migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose down 1
+	./migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose down 1
 
 .PHONY: postgres createdb dropdb createmigrate migrateup migratedown migrateup1 migratedown1
