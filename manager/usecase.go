@@ -5,6 +5,7 @@ import "github.com/terajari/bank-api/usecase"
 type UsecaseManager interface {
 	AccountsUsecase() usecase.AccountsUsecase
 	TransferUsecase() usecase.TransferUsecase
+	UsersUsecase() usecase.UsersUsecase
 }
 
 type usecaseManager struct {
@@ -17,6 +18,10 @@ func (u *usecaseManager) AccountsUsecase() usecase.AccountsUsecase {
 
 func (u *usecaseManager) TransferUsecase() usecase.TransferUsecase {
 	return usecase.NewTransferUsecase(u.Repository.AccountsRepo(), u.Repository.EntryRepo(), u.Repository.TransferRepo())
+}
+
+func (u *usecaseManager) UsersUsecase() usecase.UsersUsecase {
+	return usecase.NewUsersUsecase(u.Repository.UsersRepo())
 }
 
 func NewUsecaseManager(repositoryManager RepositoryManager) (UsecaseManager, error) {

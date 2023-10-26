@@ -17,7 +17,13 @@ createmigrate:
 migrateup:
 	migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose up
 
-migratedown:
+migrateup1:
+	migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose up 1
+
+migratedown1:
 	migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose down
 
-.PHONY: postgres createdb dropdb createmigrate migrateup migratedown
+migratedown:
+	migrate -path migration/postgres/ -database "${DB_SOURCE}" -verbose down 1
+
+.PHONY: postgres createdb dropdb createmigrate migrateup migratedown migrateup1 migratedown1
