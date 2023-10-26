@@ -1,9 +1,11 @@
 package dto
 
-import "time"
+import (
+	"time"
+)
 
 type RegisterNewAccountsRequest struct {
-	Owner    string `json:"owner" binding:"required"`
+	Owner    string `json:"owner"`
 	Currency string `json:"currency" binding:"required,currency"`
 }
 
@@ -16,7 +18,7 @@ type RegisterNewAccountsResponse struct {
 }
 
 type GetAccountRequest struct {
-	Id string `uri:"id"`
+	Id string `uri:"id" binding:"required"`
 }
 
 type GetAccountResponse struct {
@@ -28,8 +30,8 @@ type GetAccountResponse struct {
 
 type ListAccountsRequest struct {
 	Owner string `json:"owner"`
-	Page  int    `json:"limit"`
-	Size  int    `json:"offset"`
+	Page  int    `form:"page"`
+	Size  int    `form:"size"`
 }
 
 type UpdateAccountRequest struct {

@@ -7,6 +7,7 @@ type RepositoryManager interface {
 	EntryRepo() repository.EntryRepository
 	TransferRepo() repository.TransferRepository
 	UsersRepo() repository.UsersRepository
+	SessionsRepo() repository.SessionsRepository
 }
 
 type repositoryManager struct {
@@ -27,6 +28,10 @@ func (r *repositoryManager) TransferRepo() repository.TransferRepository {
 
 func (r *repositoryManager) UsersRepo() repository.UsersRepository {
 	return repository.NewUsersRepository(r.infra.Conn())
+}
+
+func (r *repositoryManager) SessionsRepo() repository.SessionsRepository {
+	return repository.NewSessionsRepository(r.infra.Conn())
 }
 
 func NewRepositoryManager(infra InfrastuctureManager) (RepositoryManager, error) {

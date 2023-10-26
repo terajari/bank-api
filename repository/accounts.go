@@ -49,7 +49,7 @@ func (r *accountsRepository) Get(ctx context.Context, id string) (model.Accounts
 }
 
 func (r *accountsRepository) List(ctx context.Context, id string, limit, offset int) ([]model.Accounts, error) {
-	query := "SELECT id, owner, balance, currency FROM accounts WHERE owner = $1 LIMIT $2 OFFSET $3 ORDER BY id"
+	query := "SELECT id, owner, balance, currency FROM accounts WHERE owner = $1 ORDER BY id LIMIT $2 OFFSET $3"
 
 	rows, err := r.db.QueryContext(ctx, query, id, limit, offset)
 	if err != nil {

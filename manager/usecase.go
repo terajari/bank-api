@@ -6,6 +6,7 @@ type UsecaseManager interface {
 	AccountsUsecase() usecase.AccountsUsecase
 	TransferUsecase() usecase.TransferUsecase
 	UsersUsecase() usecase.UsersUsecase
+	SessionsUsecase() usecase.SessionsUsecase
 }
 
 type usecaseManager struct {
@@ -22,6 +23,10 @@ func (u *usecaseManager) TransferUsecase() usecase.TransferUsecase {
 
 func (u *usecaseManager) UsersUsecase() usecase.UsersUsecase {
 	return usecase.NewUsersUsecase(u.Repository.UsersRepo())
+}
+
+func (u *usecaseManager) SessionsUsecase() usecase.SessionsUsecase {
+	return usecase.NewSessionsUsecase(u.Repository.SessionsRepo())
 }
 
 func NewUsecaseManager(repositoryManager RepositoryManager) (UsecaseManager, error) {

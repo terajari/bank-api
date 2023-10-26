@@ -1,6 +1,8 @@
 package dto
 
-import "github.com/terajari/bank-api/model"
+import (
+	"github.com/terajari/bank-api/model"
+)
 
 type MakeTransferRequest struct {
 	SenderId   string `json:"sender_id" binding:"required"`

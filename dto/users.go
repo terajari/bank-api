@@ -2,6 +2,8 @@ package dto
 
 import (
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type CreateUserRequest struct {
@@ -25,7 +27,10 @@ type LoginUserRequest struct {
 }
 
 type LoginUserResponse struct {
-	AccessToken          string      `json:"access_token"`
-	AccessTokenExpiresAt time.Time   `json:"access_token_expires_at"`
-	User                 UserReponse `json:"user"`
+	SessionsId            uuid.UUID   `json:"sessions_id"`
+	AccessToken           string      `json:"access_token"`
+	AccessTokenExpiresAt  time.Time   `json:"access_token_expires_at"`
+	RefreshToken          string      `json:"refresh_token"`
+	RefreshTokenExpiresAt time.Time   `json:"refresh_token_expires_at"`
+	User                  UserReponse `json:"user"`
 }
