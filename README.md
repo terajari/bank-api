@@ -37,7 +37,7 @@ docker build -t bank-api:latest .
 docker run --name bank-api -p 8080:8080 -e GIN_MODE=release bank-api:latest 
 ```
 
-We can increase or decrease the currency support of the bank by changing the file: [utils/currency](./utils/currency.go)
+We can add or remove the currency support of the bank by changing the file: [utils/currency](./utils/currency.go)
 ```
 package utils
 
